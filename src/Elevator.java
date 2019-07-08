@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Elevator {
     private int capacity = 5;
@@ -37,6 +38,7 @@ public class Elevator {
             } else {
                 if (currentFloor > Collections.min(this.peopleInElevator)) {
                     directionFloor = Collections.min(this.peopleInElevator);
+                    direction = "down";
                 } else {
                     direction = "up";
                     directionFloor = Collections.max(this.peopleInElevator);
@@ -48,18 +50,22 @@ public class Elevator {
     public Floor checkPeople(Floor floor, int floorNumber) {
         Randomaizer random = new Randomaizer();
 
-        for (int i = 0; i < this.peopleInElevator.size(); i++) {
-            if (this.peopleInElevator.get(i) == currentFloor) {
-                floor.getPeople().add(random.getRandomNumberInRange(1, floorNumber));
-                this.peopleInElevator.remove(i);
-            }
-        }
+        peopleInElevator = peopleInElevator.stream().filter(integer -> integer != currentFloor).collect(Collectors.toList());
+
+//        for (int i = peopleInElevator.size(); i > 0; i--) {
+//            if (this.peopleInElevator.get(i) == currentFloor) {
+//                //floor.getPeople().add(random.getRandomNumberInRange(1, floorNumber));
+//
+//
+//            }
+//        }
         for (int i = 0; i < floor.getPeople().size(); i++) {
             if ((direction.equals("up") && floor.getPeople().get(i) > currentFloor)
                     ||
                     (direction.equals("down") && floor.getPeople().get(i) < currentFloor)) {
+                if(peopleInElevator.size() < capacity)
                 this.peopleInElevator.add(floor.getPeople().get(i));
-                floor.getPeople().remove(i);
+                //floor.getPeople().remove(i);
             }
             if (this.peopleInElevator.size() == capacity) {
                 break;

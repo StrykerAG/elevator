@@ -5,6 +5,8 @@ public class Randomaizer {
         }
 
         java.util.Random random = new java.util.Random();
-        return random.nextInt((max - min) + 1) + min;
+        max -= min;
+        return (int) (Math.random() * ++max) + min;
     }
+
 }

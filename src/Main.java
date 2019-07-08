@@ -1,15 +1,22 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
         House house = new House();
         Elevator elevator = new Elevator();
-        Floor floor = new Floor();
+        Scanner scanner = new Scanner(System.in);
 
-        floor = elevator.checkPeople(house.getFloorList().get(1), house.getFloorList().size());
-        house.getFloorList().remove(1);
-        house.getFloorList().add(floor);
+
+        Floor floor = elevator.checkPeople(house.getFloorList().get(1), house.getFloorList().size());
+        elevator.move();
+        //        house.getFloorList().remove(1);
+//        house.getFloorList().add(floor);
+//        scanner.nextLine();
+        System.out.println("Люди на этаже : " + floor.getPeople());
         for (int i : elevator.getPeopleInElevator()) {
-            System.out.println("[     " + i + "     ]" + "Люди на этаже : " + floor.getPeople());
+
+            System.out.println("[     " + i + "     ]");
         }
 
         System.out.print("Максимальный этаж равен : ");
@@ -22,20 +29,20 @@ public class Main {
         System.out.print("Текущий этаж : ");
 
 
-
-
-        elevator.move();
         System.out.println(elevator.getCurrentFloor());
         System.out.println();
 
 
-        if(elevator.getPeopleInElevator().size() < 5) {
+
             floor = elevator.checkPeople(house.getFloorList().get(2), house.getFloorList().size());
-            house.getFloorList().remove(2);
-            house.getFloorList().add(floor);
-        }
+
+//            house.getFloorList().remove(2);
+//            house.getFloorList().add(floor);
+        System.out.println("Люди на этаже : " + floor.getPeople());
         for(int i : elevator.getPeopleInElevator()){
-            System.out.println("[     " + i +"     ]" + "Люди на этаже : " + floor.getPeople());
+//            String sc1 = scanner.nextLine();
+//            System.out.print(sc1);
+            System.out.println("[     " + i +"     ]");
         }
         System.out.println();
         System.out.print("Текущий этаж : ");
@@ -47,14 +54,15 @@ public class Main {
         System.out.println();
 
 
-        if(elevator.getPeopleInElevator().size() < 5) {
+
             floor = elevator.checkPeople(house.getFloorList().get(3), house.getFloorList().size());
-            house.getFloorList().remove(3);
-            house.getFloorList().add(floor);
-        }
+            elevator.move();
+//            house.getFloorList().remove(3);
+//            house.getFloorList().add(floor);
 
+        System.out.println("Люди на этаже : " + floor.getPeople());
         for(int i : elevator.getPeopleInElevator()){
-            System.out.println("[     " + i +"     ]" + "Люди на этаже : " + floor.getPeople());
+            System.out.println("[     " + i +"     ]");
         }
 
         System.out.println();
@@ -67,14 +75,15 @@ public class Main {
         System.out.println();
 
 
-        if(elevator.getPeopleInElevator().size() < 5) {
+
             floor = elevator.checkPeople(house.getFloorList().get(4), house.getFloorList().size());
-            house.getFloorList().remove(4);
-            house.getFloorList().add(floor);
-        }
+            elevator.move();
+            //            house.getFloorList().remove(4);
+//            house.getFloorList().add(floor);
 
+        System.out.println("Люди на этаже : " + floor.getPeople());
         for(int i : elevator.getPeopleInElevator()){
-            System.out.println("[     " + i +"     ]" + "Люди на этаже : " + floor.getPeople());
+            System.out.println("[     " + i +"     ]");
         }
 
         System.out.println();
@@ -86,14 +95,14 @@ public class Main {
         System.out.println(elevator.getCurrentFloor());
         System.out.println();
 
-        if(elevator.getPeopleInElevator().size() < 5) {
+
             floor = elevator.checkPeople(house.getFloorList().get(4), house.getFloorList().size());
             house.getFloorList().remove(5);
             house.getFloorList().add(floor);
-        }
 
+        System.out.println("Люди на этаже : " + floor.getPeople());
         for(int i : elevator.getPeopleInElevator()){
-            System.out.println("[     " + i +"     ]" + "Люди на этаже : " + floor.getPeople());
+            System.out.println("[     " + i +"     ]");
         }
 
     }
