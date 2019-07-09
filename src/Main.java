@@ -8,7 +8,7 @@ public class Main {
         Elevator elevator = new Elevator();
         Scanner scanner = new Scanner(System.in);
         System.out.println(" Всего этажей в доме " + house.getFloorList().size());
-        for (int i = 1; i < 100; i++) {
+        for (int i = 1; i < house.getFloorList().size(); i++) {
             Floor floor = elevator.checkPeople(house.getFloorList().get(i), house.getFloorList().size());
             elevator.move();
             scanner.nextLine();
