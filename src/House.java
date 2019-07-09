@@ -14,7 +14,6 @@ public class House {
         floorNumber = random.getRandomNumberInRange(5, 20);
 
 
-        //for(int i = 1; i < ((int) (Math.random() * 10)) + 5; i++) {
         for (int i = 1; i <= floorNumber; i++) {
             floor.setNum(i);
 

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,14 +25,23 @@ public class Elevator {
     }
 
     public void move() {
-        if (direction.equals("up")) {
+        if(direction.equals("up") && directionFloor>=currentFloor){
             moveUp();
-        } else moveDown();
+        }if(direction.equals("down") && directionFloor<=currentFloor){
+            moveDown();
+        }
     }
+
+//
+//    public void move() {
+//        if (direction.equals("up")) {
+//            moveUp();
+//        } else moveDown();
+//    }
 
     public void setDirectionFloor() {
         if (direction.equals("up")) {
-            if (currentFloor < Collections.max(this.peopleInElevator)) {
+            if (currentFloor < Collections.max(this.peopleInElevator))   {
                 directionFloor = Collections.max(this.peopleInElevator);
             } else {
                 if (currentFloor > Collections.min(this.peopleInElevator)) {
@@ -51,21 +59,14 @@ public class Elevator {
         Randomaizer random = new Randomaizer();
 
         peopleInElevator = peopleInElevator.stream().filter(integer -> integer != currentFloor).collect(Collectors.toList());
-
-//        for (int i = peopleInElevator.size(); i > 0; i--) {
-//            if (this.peopleInElevator.get(i) == currentFloor) {
-//                //floor.getPeople().add(random.getRandomNumberInRange(1, floorNumber));
-//
-//
-//            }
-//        }
+        floor.getPeople().add(random.getRandomNumberInRange(1, floorNumber));
         for (int i = 0; i < floor.getPeople().size(); i++) {
             if ((direction.equals("up") && floor.getPeople().get(i) > currentFloor)
                     ||
                     (direction.equals("down") && floor.getPeople().get(i) < currentFloor)) {
-                if(peopleInElevator.size() < capacity)
-                this.peopleInElevator.add(floor.getPeople().get(i));
-                //floor.getPeople().remove(i);
+                if (peopleInElevator.size() < capacity)
+                    this.peopleInElevator.add(floor.getPeople().get(i));
+                floor.getPeople().remove(i);
             }
             if (this.peopleInElevator.size() == capacity) {
                 break;
