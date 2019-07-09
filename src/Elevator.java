@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class Elevator {
     private int capacity = 5;
-    private String direction;
+    public String direction;
     private int currentFloor;
     private int directionFloor;
     private List<Integer> peopleInElevator;
@@ -17,31 +17,21 @@ public class Elevator {
     }
 
     public void moveUp() {
-        this.currentFloor++;
-    }
-
-    public void moveDown() {
-        this.currentFloor--;
-    }
-
-    public void move() {
-        if(direction.equals("up") && directionFloor>=currentFloor){
-            moveUp();
-        }if(direction.equals("down") && directionFloor<=currentFloor){
-            moveDown();
+        if (direction.equals("up") && directionFloor >= currentFloor) {
+            this.currentFloor++;
         }
     }
 
-//
-//    public void move() {
-//        if (direction.equals("up")) {
-//            moveUp();
-//        } else moveDown();
-//    }
+    public void moveDown() {
+        if (direction.equals("down") && directionFloor <= currentFloor) {
+            this.currentFloor--;
+        }
+    }
+
 
     public void setDirectionFloor() {
         if (direction.equals("up")) {
-            if (currentFloor < Collections.max(this.peopleInElevator))   {
+            if (currentFloor < Collections.max(this.peopleInElevator)) {
                 directionFloor = Collections.max(this.peopleInElevator);
             } else {
                 if (currentFloor > Collections.min(this.peopleInElevator)) {
