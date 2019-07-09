@@ -19,7 +19,7 @@ public class Main {
                 }
                 elevator.setDirectionFloor();
                 int maxFloor = elevator.getDirectionFloor();
-                System.out.println("Максимальный этаж равен : " + maxFloor);
+                System.out.println("Верхний этаж : " + maxFloor);
                 if (elevator.getCurrentFloor() == elevator.getDirectionFloor()) {
                     for (int a = house.getFloorList().size() - 1; a > 0; a--) {
                         floor = elevator.checkPeople(house.getFloorList().get(a), house.getFloorList().size());
@@ -30,6 +30,8 @@ public class Main {
                         for (int j : elevator.getPeopleInElevator()) {
                             System.out.println("[     " + j + "     ]");
                         }
+                        int minFloor = elevator.getDirectionFloor();
+                        System.out.println("Нижний этаж : " + minFloor);
                     }
                 }
 
